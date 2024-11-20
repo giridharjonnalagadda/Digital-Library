@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to E-Library</title>
+    <style>
+      /* General Styles */
+      body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #e9ecef;
+        background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20230526/pngtree-an-old-bookcase-in-a-library-image_2642908.jpg');
+        background-size: cover;
+        background-position: center;
+        color: #333;
+        height: 100vh;
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Navbar Styles */
+      .navbar {
+        background-color: #2c3e50;
+        color: #fff;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: flex;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .navbar a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        margin-left: 20px;
+        padding: 10px 20px;
+        transition: background-color 0.3s, transform 0.3s;
+      }
+
+      .navbar a:hover {
+        background-color: #34495e;
+        transform: scale(1.05);
+        border-radius: 4px;
+      }
+
+      /* Main Content */
+      .container {
+        width: 90%;
+        margin: 100px auto 0 auto;
+        padding: 40px;
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        overflow: hidden;
+      }
+
+      h1 {
+        color: #333;
+        font-size: 38px;
+        margin-bottom: 40px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      /* Card Section */
+      .cards-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+        gap: 20px;
+        padding: 40px 0;
+      }
+
+      .card {
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 25px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid #ddd;
+        cursor: pointer;
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .card h3 {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 15px;
+        font-weight: 600;
+      }
+
+      .card p {
+        color: #555;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      /* Responsive Text Sizes */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 30px;
+        }
+
+        .card h3 {
+          font-size: 20px;
+        }
+
+        .card p {
+          font-size: 14px;
+        }
+
+        /* Responsive grid: 1 card per row on small screens */
+        .cards-container {
+          grid-template-columns: 1fr; 
+        }
+      }
+
+      @media (max-width: 1024px) {
+        /* For tablet and mid-sized screens: 2 cards per row */
+        .cards-container {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <div class="navbar">
+      <a href="/ureg">User Register</a>
+      <a href="/admlog">Admin Login</a>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+      <h1>Welcome to E-Library</h1>
+
+      <!-- Cards for Features -->
+      <div class="cards-container">
+        <div class="card">
+          <h3>Book Collection</h3>
+          <p>Explore our vast collection of e-books across various genres. Find the latest bestsellers, classics, and more.</p>
+        </div>
+
+        <div class="card">
+          <h3>Easy Borrowing</h3>
+          <p>Users can borrow books with a simple click. Choose your book, borrow it, and enjoy reading anytime, anywhere.</p>
+        </div>
+
+        <div class="card">
+          <h3>Admin Dashboard</h3>
+          <p>Admin users can manage the entire library collection, including adding books, viewing borrowing details, and more.</p>
+        </div>
+
+        <div class="card">
+          <h3>Reading History</h3>
+          <p>Track your borrowed books, see reading history, and stay up-to-date with due dates to avoid late returns.</p>
+        </div>
+
+        <div class="card">
+          <h3>Search & Filter</h3>
+          <p>Find books easily using our advanced search and filtering system. Search by title, author, genre, or ISBN.</p>
+        </div>
+
+        <div class="card">
+          <h3>Secure Login</h3>
+          <p>Both users and admins can securely log in to access their personalized content and manage their accounts.</p>
+        </div>
+      </div>
+    </div>
+
+    
+  </body>
+</html>

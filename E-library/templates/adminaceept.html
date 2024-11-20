@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: "Roboto", sans-serif;
+            background-color: #2c3e50;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://i0.wp.com/cms.babbel.news/wp-content/uploads/2022/01/Most_Beautiful_Libraries.png');
+            background-size: cover;
+            background-position: center;
+            color: #f4f4f4;
+        }
+
+        .navbar {
+            background-color: #1a252f;
+            padding: 20px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #f4f4f4;
+            font-weight: bold;
+            margin-left: 15px;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #ffcc00;
+        }
+
+        .container {
+            width: 90%;
+            margin: 40px auto;
+            background-color: #34495e;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ffcc00;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            color: #f4f4f4;
+            background-color: #2c3e50;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #47565e;
+            padding: 12px;
+            text-align: center;
+        }
+
+        table th {
+            background-color: #1a252f;
+            font-weight: bold;
+            color: #ffcc00;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #2e3d49;
+        }
+
+        table tr:hover {
+            background-color: #47565e;
+        }
+
+        .actions button {
+            padding: 8px 16px;
+            margin-right: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .edit-btn {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .delete-btn {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .accept-btn {
+            background-color: #2ecc71;
+            color: white;
+        }
+
+        .actions button:hover {
+            opacity: 0.9;
+        }
+
+        .status {
+            text-align: center;
+            color: #2ecc71;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <a href="/admindex">Admin Dashboard</a>
+        </div>
+        <div class="nav-links">
+            <a href="/admindex">Add Book</a>
+            <a href="/viewbooks">View Books</a>
+            <a href="/returnaccept">Admin Requests</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Admin Dashboard</h1>
+        
+        <!-- Display Status message if any -->
+        {% if status %}
+        <div class="status">
+            <p>{{ status }}</p>
+        </div>
+        {% endif %}
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Book Title</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for return in books %}
+                <tr>
+                    <td>{{ return.username }}</td>
+                    <td>
+                        <!-- Ensure the book title is rendered correctly -->
+                        {{ return.bookname.title if return.bookname.title else 'Unknown Title' }}
+                    </td>
+                    <td>
+                        <a href="{{ url_for('acceptreturn', id=return._id) }}">
+                            <button type="button" class="accept-btn">Accept</button>
+                        </a>   
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
